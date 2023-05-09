@@ -10,6 +10,7 @@ namespace PokemonBattleAssist.Entities
 
     public partial class Pokemon
     {
+        
         [JsonProperty("abilities")]
         public List<Ability>? Abilities { get; set; }
 
@@ -59,7 +60,7 @@ namespace PokemonBattleAssist.Entities
         public List<Stat>? Stats { get; set; }
 
         [JsonProperty("types")]
-        public List<TypeElement>? Types { get; set; }
+        public List<TypeElement> Types { get; set; }
 
         [JsonProperty("weight")]
         public long Weight { get; set; }
@@ -68,5 +69,127 @@ namespace PokemonBattleAssist.Entities
         {
 
         }
+        public List<string> WeakTo()
+        {
+            List<string> pokemonTypes = new List<string>();
+            List<string> weakness = new List<string>();
+            
+            foreach(TypeElement type in Types)
+            {
+                pokemonTypes.Add(type.Type.Name);
+            }
+            for (int i = 0; i < pokemonTypes.Count; i++)
+            {
+                if (pokemonTypes[i] == "normal")
+                {
+                    weakness.Add("Fighting");
+                }
+                if (pokemonTypes[i] == "grass")
+                {
+                    weakness.Add("Bug");
+                    weakness.Add("Fire");
+                    weakness.Add("Flying");
+                    weakness.Add("Ice");
+                    weakness.Add("Poison");
+                }
+                if (pokemonTypes[i] == "fire")
+                {
+                    weakness.Add("Rock");
+                    weakness.Add("Ground");
+                    weakness.Add("Water");
+
+                }
+                if (pokemonTypes[i] == "water")
+                {
+                    weakness.Add("Eletric");
+                    weakness.Add("Grass");
+                }
+                if (pokemonTypes[i] == "electric")
+                {
+                    weakness.Add("Ground");
+                }
+                if (pokemonTypes[i] == "flying")
+                {
+                    weakness.Add("Eletric");
+                    weakness.Add("Rock");
+                    weakness.Add("Ice");
+                }
+                if (pokemonTypes[i] == "ice")
+                {
+                    weakness.Add("Fighting");
+                    weakness.Add("Fire");
+                    weakness.Add("Rock");
+                    weakness.Add("Steel");
+                }
+                if (pokemonTypes[i] == "rock")
+                {
+                    weakness.Add("Fighting");
+                    weakness.Add("Grass");
+                    weakness.Add("Ground");
+                    weakness.Add("Steel");
+                    weakness.Add("Water");
+                }
+                if (pokemonTypes[i] == "ground")
+                {
+                    weakness.Add("Ice");
+                    weakness.Add("Grass");
+                    weakness.Add("Water");
+                }
+                if (pokemonTypes[i] == "steel")
+                {
+                    weakness.Add("Fighting");
+                    weakness.Add("Fire");
+                    weakness.Add("Ground");
+                }
+                if (pokemonTypes[i] == "fighting")
+                {
+                    weakness.Add("Fairy");
+                    weakness.Add("Flying");
+                    weakness.Add("Psychic");
+                }
+                if (pokemonTypes[i] == "dark")
+                {
+                    weakness.Add("Bug");
+                    weakness.Add("Fairy");
+                    weakness.Add("Fighting");
+                }
+                if (pokemonTypes[i] == "psychic")
+                {
+                    weakness.Add("Bug");
+                    weakness.Add("Dark");
+                    weakness.Add("Ghost");
+                }
+                if (pokemonTypes[i] == "poison")
+                {
+                    weakness.Add("Ground");
+                    weakness.Add("Psychic");
+                }
+                if (pokemonTypes[i] == "bug")
+                {
+                    weakness.Add("Fire");
+                    weakness.Add("Flying");
+                    weakness.Add("Rock");
+                }
+                if (pokemonTypes[i] == "fairy")
+                {
+                    weakness.Add("Poison");
+                    weakness.Add("Steel");
+                }
+                if (pokemonTypes[i] == "ghost")
+                {
+                    weakness.Add("Dark");
+                    weakness.Add("Ghost");
+                }
+                if (pokemonTypes[i] == "dragon")
+                {
+                    weakness.Add("Dragon");
+                    weakness.Add("Fairy");
+                    weakness.Add("Ice");
+                }
+            }
+
+            return weakness;
+        }
+        
     }
 }

@@ -10,15 +10,26 @@ namespace PokemonBattleAssist
     {
         static async Task Main(string[] args)
         {
-            ClientAPI client = new ClientAPI();
+            Console.WriteLine("Escreva o nome do Pokemon que você esta enfrentando:");
+            Console.WriteLine();
             string request = Console.ReadLine();
-
+            ClientAPI client = new ClientAPI();
             Pokemon pokemon = await client.SearchPokemon(request);
-            
-            foreach(TypeElement type in pokemon.Types)
+
+            Console.WriteLine();
+            Console.WriteLine("Tipo: ");
+            foreach (TypeElement type in pokemon.Types)
             {
-                Console.WriteLine(type.Type.Name.ToUpperInvariant());
+                Console.WriteLine(char.ToUpper(type.Type.Name[0])+ type.Type.Name.Substring(1));
             }
+            Console.WriteLine();
+
+            Console.WriteLine("Fraco contra: ");
+            foreach (string weak in pokemon.WeakTo())
+            {
+                Console.WriteLine(weak);
+            }
+
             
         }
 
