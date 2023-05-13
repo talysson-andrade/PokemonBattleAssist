@@ -25,7 +25,7 @@ namespace PokemonBattleAssist
             Console.WriteLine();
 
             Console.WriteLine("Fraco contra: ");
-            foreach (string weak in pokemon.WeakTo())
+            foreach (string weak in pokemon.BattleStats())
             {
                 Console.WriteLine(weak);
             }

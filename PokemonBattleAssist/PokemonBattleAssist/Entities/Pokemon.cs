@@ -69,6 +69,152 @@ namespace PokemonBattleAssist.Entities
         {
 
         }
+
+        public List<string> BattleStats()
+        {
+            List<string> weakness =StrongTo(WeakTo());
+            return weakness;
+
+        }
+        public List<string> StrongTo(List<string> weakness)
+        {
+            List<string> pokemonTypes = new List<string>();
+
+            foreach (TypeElement type in Types)
+            {
+                pokemonTypes.Add(type.Type.Name);
+            }
+            for (int i = 0; i < pokemonTypes.Count; i++)
+            {
+                if (pokemonTypes[i] == "normal")
+                {
+                    weakness.Remove("Ghost");
+                }
+                if (pokemonTypes[i] == "grass")
+                {
+                    weakness.Remove("Electric");
+                    weakness.Remove("Grass");
+                    weakness.Remove("Water");
+                    weakness.Remove("Ground");
+                }
+                if (pokemonTypes[i] == "fire")
+                {
+                    weakness.Remove("Bug");
+                    weakness.Remove("Steel");
+                    weakness.Remove("Fire");
+                    weakness.Remove("Grass");
+                    weakness.Remove("Ice");
+                    weakness.Remove("Fairy");
+
+                }
+                if (pokemonTypes[i] == "water")
+                {
+                    weakness.Remove("Steel");
+                    weakness.Remove("Fire");
+                    weakness.Remove("Water");
+                    weakness.Remove("Ice");
+                }
+                if (pokemonTypes[i] == "electric")
+                {
+                    weakness.Remove("Flying");
+                    weakness.Remove("Steel");
+                    weakness.Remove("Electric");
+
+                }
+                if (pokemonTypes[i] == "flying")
+                {
+                    weakness.Remove("Fighting");
+                    weakness.Remove("Bug");
+                    weakness.Remove("Grass");
+                }
+                if (pokemonTypes[i] == "ice")
+                {
+                    weakness.Remove("Ice");
+                }
+                if (pokemonTypes[i] == "rock")
+                {
+                    weakness.Remove("Normal");
+                    weakness.Remove("Flying");
+                    weakness.Remove("Poison");
+                    weakness.Remove("Fire");
+                    
+                }
+                if (pokemonTypes[i] == "ground")
+                {
+                    weakness.Remove("Poison");
+                    weakness.Remove("Rock");
+                    weakness.Remove("Electric");
+                }
+                if (pokemonTypes[i] == "steel")
+                {
+                    weakness.Remove("Fairy");
+                    weakness.Remove("Normal");
+                    weakness.Remove("Flying");
+                    weakness.Remove("Poison");
+                    weakness.Remove("Rock");
+                    weakness.Remove("Bug");
+                    weakness.Remove("Steel");
+                    weakness.Remove("Grass");
+                    weakness.Remove("Psychic");
+                    weakness.Remove("Ice");
+                    weakness.Remove("Dragon");
+                }
+                if (pokemonTypes[i] == "fighting")
+                {
+                    weakness.Remove("Rock");
+                    weakness.Remove("Bug");
+                    weakness.Remove("Dark");
+                }
+                if (pokemonTypes[i] == "dark")
+                {
+                    weakness.Remove("Ghost");
+                    weakness.Remove("Psychic");
+                    weakness.Remove("Dark");
+                }
+                if (pokemonTypes[i] == "psychic")
+                {
+                    weakness.Remove("Fighting");
+                    weakness.Remove("Psychic");
+                }
+                if (pokemonTypes[i] == "poison")
+                {
+                    weakness.Remove("Fairy");
+                    weakness.Remove("Fighting");
+                    weakness.Remove("Poison");
+                    weakness.Remove("Bug");
+                    weakness.Remove("Grass");
+                }
+                if (pokemonTypes[i] == "bug")
+                {
+                    weakness.Remove("Fighting");
+                    weakness.Remove("Ground");
+                    weakness.Remove("Grass");
+                }
+                if (pokemonTypes[i] == "fairy")
+                {
+                    weakness.Remove("Bug");
+                    weakness.Remove("Fighting");
+                    weakness.Remove("Dragon");
+                    weakness.Remove("Dark");
+                }
+                if (pokemonTypes[i] == "ghost")
+                {
+                    weakness.Remove("Normal");
+                    weakness.Remove("Fighting");
+                    weakness.Remove("Poison");
+                    weakness.Remove("Bug");
+
+                }
+                if (pokemonTypes[i] == "dragon")
+                {
+                    weakness.Remove("Fire");
+                    weakness.Remove("Water");
+                    weakness.Remove("Grass");
+                    weakness.Remove("Electric");
+                }
+            }
+            return weakness;
+        }
         public List<string> WeakTo()
         {
             List<string> pokemonTypes = new List<string>();
